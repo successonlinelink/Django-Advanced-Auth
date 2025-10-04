@@ -1,0 +1,102 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>User Authentication</title>
+        
+        <link rel="icon" href="{% static 'assets/images/logos/top-logo.png' %}">
+        <!--------------- swiper-css ---------------->
+        <link rel="stylesheet" href="{% static 'assets/css/swiper10-bundle.min.css' %}">
+        <!--------------- bootstrap-css ---------------->
+        <link rel="stylesheet" href="{% static 'assets/css/bootstrap-5.3.2.min.css' %}">
+        <!---------------------- Range Slider ------------------->
+        <link rel="stylesheet" href="{% static 'assets/css/nouislider.min.css' %}">
+        <!---------------------- Scroll ------------------->
+        <link rel="stylesheet" href="{% static 'assets/css/aos-3.0.0.css' %}">
+        <!--------------- additional-css ---------------->
+        <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+
+    </head>
+
+    <body>
+
+        <!--------------- header-section --------------->
+        <header id="header" class="header">
+            <div class="header-top-section">
+                <div class="container">
+                    <div class="header-top">
+                        <div class="header-profile" style="margin: 1rem;">
+                            
+                            <a href="/"><span>Home</span></a>
+
+                            {% if request.user.is_authenticated %}
+                                <a href="{% url 'accounts:dashboard' %}"><span>Account</span></a>
+                                <a href="{% url 'authuser:logout' %}"><span>Logout</span></a>
+
+                            {% else %}
+                                <a href="{% url 'authuser:register' %}"><span>Register</span></a>
+                                <a href="{% url 'authuser:login' %}"><span>Login</span></a>
+                                
+                            {% endif %}
+                                
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+        </header>
+        <!--------------- header-section-end --------------->
+        
+        <div style="font-size: 15px; color: red; text-align: center; margin-top: 2rem;">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{message.tags}}">
+                        <!-- You can still customize the alert else where and import it here -->    
+                        {{ message }}
+                    </div>
+                {% endfor %} 
+            {% endif %}
+        </div>
+
+        <script>
+            setTimeout (() => {
+                $(".alert").alert("close")
+            }, 3000)
+        </script>
+            
+        
+        {% block content %}
+
+
+            
+        {% endblock content %}
+        
+
+        <!--------------- jQuery ---------------->
+        <script data-cfasync="false" src="{% static '../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js' %}"></script><script src="{% static 'assets/js/jquery_3.7.1.min.js' %}"></script>
+
+        <!--------------- bootstrap-js ---------------->
+        <script src="{% static 'assets/js/bootstrap_5.3.2.bundle.min.js' %}"></script>
+
+        <!--------------- Range-Slider-js ---------------->
+        <script src="{% static 'assets/js/nouislider.min.js' %}"></script>
+
+        <!--------------- scroll-Animation-js ---------------->
+        <script src="{% static 'assets/js/aos-3.0.0.js' %}"></script>
+
+        <!--------------- swiper-js ---------------->
+        <script src="{% static 'assets/js/swiper10-bundle.min.js' %}"></script>
+
+        <!--------------- additional-js ---------------->
+        <script src="{% static 'assets/js/ecoshop.js' %}"></script>
+
+
+        <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"05c60afabf3e4b64ba091c1c292eafc9","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+    </body>
+
+
+</html>

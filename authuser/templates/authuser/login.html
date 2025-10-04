@@ -1,0 +1,82 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    
+    <!--------------- login-section --------------->
+    <section class="login product footer-padding">
+        <!--  -->
+        {% if request.GET.command == 'verification' %}
+            <div>
+                <p>
+                    Please Verify your email address [{{ request.GET.email }}] to complete your registration.
+                </p>
+            </div>
+        {% else%}             
+            <!--  -->
+            <div class="container">
+                <div class="login-section">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <div class="login-form">
+
+                                <form method="POST" class="review-form box-shadows">
+                                    {% csrf_token %}
+
+                                    <div class="review-form-text">
+                                        <h5 class="comment-title">Log In</h5>
+                                        <img src="{% static 'assets/images/homepage-one/vector-line.png' %}" alt="img">
+                                    </div>
+
+                                    <div class="review-inner-form ">
+                                        <div class="review-form-name">
+                                            <label for="email" class="form-label">Email Address*</label>
+                                            <input type="email" name="email" class="form-control" placeholder="Email">
+                                        </div>
+
+                                        <div class="review-form-name">
+                                            <label for="password" class="form-label">Forget Password*</label>
+                                            <input type="password" name="password" class="form-control" placeholder="password">
+                                        </div>
+
+                                    </div>
+
+                                    <div class="review-form-name checkbox">
+                                        <div class="checkbox-item">
+                                            <p class="remember">
+                                                <span class="shop-account">Forgot Password?
+                                                    <a href="{% url 'authuser:forget_password' %}">Click</a>
+                                                </span> 
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="login-btn text-center mt-3">
+                                        <button type="submit" class="shop-btn">Login</button>
+                                        <span class="shop-account">Don't have an account? <a href="{% url 'authuser:register' %}">Register</a> </span>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="login-img">
+                                <img src="{% static 'assets/images/homepage-one/account-img.webp' %}" alt="img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            
+        {% endif %}
+
+
+    </section>
+    <!--------------- login-section-end --------------->
+
+{% endblock content %}
+    
+    
+

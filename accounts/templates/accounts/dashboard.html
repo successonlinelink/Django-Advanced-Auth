@@ -1,0 +1,70 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <!---------------user-profile-section---------------->
+    <section class="user-profile footer-padding">
+        <div class="container">
+            <div class="user-profile-section box-shadows">
+                <div class="user-dashboard">
+                    
+                    <div class="nav nav-item nav-pills  me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        {% include 'includes/sidebar.html' %}
+
+                    </div>
+
+                    <!-- nav-content -->
+                    <div class="tab-content nav-content" id="v-pills-tabContent" style="flex: 1 0%;">
+
+                        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                            aria-labelledby="v-pills-home-tab" tabindex="0">
+                            <div class="user-profile">
+                                <div class="user-title">
+                                    <p class="paragraph">Hello, {{request.user}} </p>
+                                    <h5 class="heading">Welcome to your Profile </h5>
+                                </div>
+                                
+                                <div class="profile-section">
+                                    <div class="row g-5">
+
+                                        <div class="col-lg-12">
+                                            <div class="info-section">
+                                                <div class="seller-info">
+                                                    <h5 class="heading">Personal Information</h5>
+                                                    <div class="info-list">
+                                                        <div class="info-title">
+                                                            <p>Name:</p>
+                                                            <p>Email:</p>
+                                                            <p>Phone:</p>
+                                                            <p>Bio:</p>
+                                                            <p>Id:</p>
+                                                        </div>
+                                                        <div class="info-details">
+                                                            <p>{{request.user.username}}</p>
+                                                            <p>{{request.user.email}}</p>
+                                                            <p> {{user.profile.phone}} </p>
+                                                            <p>{{user.profile.bio}}</p>
+                                                            <p style="text-transform: uppercase;">{{user.profile.uid}}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--------------- user-profile-section-end --------------->
+
+{% endblock content %}
+    
+    
+

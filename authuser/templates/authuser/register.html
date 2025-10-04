@@ -1,0 +1,81 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    
+    <!--------------- login-section--------------->
+    <section class="login product footer-padding">
+        <div class="container">
+            <div class="login-section account-section">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-xs-12">
+
+                        <div class="review-form-text mb-4">
+                            <h5 class="comment-title"><center>Create Account</center></h5>
+                        </div>
+
+                        <p style="color: red; font-size: 14px;">
+                            <!-- You can add username -->
+                            {{ form.email.errors }}
+                            {{ form.password1.errors }}
+                            {{ form.password2.errors }}
+                        </p>
+                        
+                        <p>
+                            {{ form.non_field_errors }}
+                        </p>
+
+                        <form method="POST" class="review-form box-shadows">
+                            {% csrf_token %}
+
+                            <div class="account-inner-form">
+                                <div class="review-form-name">
+                                    <label for="fname" class="form-label">User Name*</label>
+                                    {{form.username}}
+                                </div>
+                            </div>
+
+                            <div class=" account-inner-form">
+                                <div class="review-form-name">
+                                    <label for="email" class="form-label">Email*</label>
+                                    {{form.email}}
+                                </div>
+                            </div>
+
+                            <div class=" account-inner-form">
+                                <div class="review-form-name">
+                                    <label for="cpass" class="form-label">Password*</label>
+                                    {{form.password1}}
+                                </div>
+
+                                <div class="review-form-name">
+                                    <label for="rpass" class="form-label">Retype Password*</label>
+                                    {{form.password2}}
+                                </div>
+                            </div>
+
+                            <div class="login-btn text-center mt-3">
+                                <button type="submit" class="shop-btn">Create an Account</button>
+                                <span class="shop-account">Already have an account? <a href="{% url 'authuser:login' %}">Log In</a> </span>
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                    <div class="col-lg-6 col-xs-12 d-none d-lg-block">
+                        <div class="account-img">
+                            <img src="{% static 'assets/images/homepage-one/account-img.webp' %}" alt="img">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--------------- login-section-end --------------->
+{% endblock content %}
+    
+    
+

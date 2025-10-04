@@ -1,0 +1,95 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <!---------------user-profile-section---------------->
+    <section class="user-profile footer-padding">
+        <div class="container">
+            <div class="user-profile-section box-shadows">
+                <div class="user-dashboard">
+                    
+                    <div class="nav nav-item nav-pills  me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        {% include 'includes/sidebar.html' %}
+
+                    </div>
+
+                    <!-- nav-content -->
+                    <div class="tab-content nav-content" id="v-pills-tabContent" style="flex: 1 0%;">
+                        <!-- Personal Information -->
+                        <div class="seller-application-section">
+
+                            <form method="POST" class="row" enctype="multipart/form-data">
+                                {% csrf_token %}
+
+                                <div class="col-lg-7">
+                                    <div class=" account-section">
+                                        <div class="review-form">
+                                            <div class=" account-inner-form">
+                                                <div class="review-form-name">
+                                                    <label for="firname" class="form-label">Full Name*</label>
+                                                    <!-- <input type="text" id="firname" class="form-control" placeholder="First Name"> -->
+                                                    {{ form.full_name }}
+                                                </div>
+
+                                                <div class="review-form-name">
+                                                    <label for="latname" class="form-label">Phone*</label>
+                                                    <!-- <input type="text" id="latname" class="form-control" placeholder="Last Name"> -->
+                                                    {{ form.phone }}
+                                                </div>
+                                            </div>
+
+                                            <div class=" account-inner-form">
+                                                <div class="review-form-name">
+                                                    <label for="gmail" class="form-label">Bio*</label>
+                                                    <!-- <input type="email" id="gmail" class="form-control" placeholder="user@gmail.com"> -->
+                                                    {{ form.bio }}
+                                                </div>
+
+                                            </div>
+
+                                            <div class=" account-inner-form">
+                                                <div class="review-form-name">
+                                                    <label for="gmail" class="form-label">Image*</label>
+                                                    <!-- <input type="email" id="gmail" class="form-control" placeholder="user@gmail.com"> -->
+                                                    {{ form.image }}
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-5">
+                                    <div class="img-upload-section">
+                                        <div class="logo-wrapper">
+                                            <h5 class="comment-title">Update Image</h5>
+                                            <div class="logo-upload">
+                                                <img src="{{request.user.profile.image.url}}" alt="upload"
+                                                    class="upload-img" id="upload-img">
+                                              
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="submit-btn">
+                                    <button type="submit" class="shop-btn update-btn">Update Profile</button>
+                                </div>
+
+                            </form>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--------------- user-profile-section-end --------------->
+
+{% endblock content %}
+    
+    
+

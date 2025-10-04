@@ -1,0 +1,24 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    
+    <!--------------- login-section--------------->
+    <section class="login product footer-padding">
+        <div class="container">
+            
+            {% if request.user.is_authenticated %}
+                <h3>Welcome {{request.user}} </h3>
+            {% else %}
+                <h3>Please Login First</h3>
+            {% endif %}
+                
+            
+        </div>
+    </section>
+    <!--------------- login-section-end --------------->
+{% endblock content %}
+    
+    
+
